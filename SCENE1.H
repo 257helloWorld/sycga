@@ -24,6 +24,7 @@ void clr_cursor(int x, int y) {
 }
 
 void taskbar() {
+	line(0,57,getmaxx(),57);
 	// Battery Icon
 	rectangle(569,33,579,40);
 	rectangle(579,40,569,25);
@@ -67,8 +68,6 @@ void clr_chrome_icon(int x, int y) {
 }
 
 void desktop() {
-	line(0,57,getmaxx(),57);
-	chrome_icon(84,128);
 	taskbar();
 }
 
@@ -110,6 +109,7 @@ void cursor_movement() {
 
 void click_chrome() {
 	desktop();
+	chrome_icon(84,128);
 	cursor_movement();
 	delay(300);
 	click_animation();
