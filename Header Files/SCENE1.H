@@ -1,4 +1,12 @@
 #include<layout.h>
+#include<dtime.h>
+
+char* h = c_hours();
+char* m = c_mins();
+char* s = c_secs();
+char* t_s = s;
+char* t_m = m;
+char* t_h = h;
 
 void desktop() {
 	taskbar();
@@ -24,11 +32,24 @@ void cursor_movement() {
 	int cur_x = 326;
 	int cur_y = 248;
 	int flag1 = 0;
+	int d_a = 0;
 	int cursor_move = 1;
 	// Initial cursor
 	cursor(cur_x,cur_y);
 	// Movemet
+	d_time(h,m,s,getmaxx()/2-25,25);
 	while(cursor_move == 1) {
+		h = c_hours();
+		m = c_mins();
+		s = c_secs();
+		if(s != t_s) {
+			clr_d_time(t_h,t_m,t_s,getmaxx()/2-25,25);
+			d_time(h,m,s,getmaxx()/2-25,25);
+			t_s = s;
+			t_m = m;
+			t_h = h;
+		}
+		
 		clr_cursor(cur_x,cur_y);
 		cur_x = cur_x -1;
 		cur_y = (flag1%2 == 0) ? cur_y-1 : cur_y;
@@ -38,6 +59,8 @@ void cursor_movement() {
 		}
 		chrome_icon(84,128);
 		flag1++;
+		d_a++;
+		d_a = d_a == 4 ? 0 : d_a;
 		delay(2);
 	}
 

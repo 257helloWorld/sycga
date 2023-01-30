@@ -1,5 +1,6 @@
 #include<obs.h>
 void start_game() {
+	d_time(h,m,s,getmaxx()/2-25,25);
 	int a = 0;
 	int jump = 0;
 	int line_v = 1;
@@ -7,8 +8,8 @@ void start_game() {
 	int line_x = 132+60, line_y = 261;
 	int dino_x = x+50;
 	int dino_y = y+3;
-	int obs_x = 640;
-	int obs_y = dino_y;
+	int obs_x = 480;
+	int obs_y = 258;
 	while(dino_y > 185) {
 		clr_dino(dino_x,dino_y);
 		dino_y--;
@@ -26,9 +27,20 @@ void start_game() {
 	int d_a = 0;
 	int d_b = 0;
 	int d_c = 0;
-	obs1(obs_x, obs_y);
-	obs2(obs_x+20, obs_y);
+	obs_g1(obs_x, obs_y);
 	while(1) {
+		// Time
+		h = c_hours();
+		m = c_mins();
+		s = c_secs();
+		if(s != t_s) {
+			clr_d_time(t_h,t_m,t_s,getmaxx()/2-25,25);
+			d_time(h,m,s,getmaxx()/2-25,25);
+			t_s = s;
+			t_m = m;
+			t_h = h;
+		}
+		// End
 		int t_x = dino_x;
 		int t_y = dino_y;
 		if(kbhit()) { a = getch(); }
@@ -37,6 +49,7 @@ void start_game() {
 			break;
 		}
 		
+		
 		// Move dino first time
 		if(dino_x < x+50+15 && d_c == 5) {
 			clr_dino(dino_x,dino_y);
@@ -44,35 +57,32 @@ void start_game() {
 			dino(dino_x,dino_y);
 		}
 		
-		if(d_b == 4) {
-			clr_obs1(obs_x,obs_y);
-			clr_obs2(obs_x+20,obs_y);
-			obs_x -= 1;
-			obs1(obs_x,obs_y);
-			obs2(obs_x+20,obs_y);
+		if(d_b == 2 && d_b == 2) {
+			clr_obs_g1(obs_x,obs_y);
+			obs_x -= 2;
+			obs_g1(obs_x,obs_y);
 		}
 		
 		if(obs_x == 100) {
-			clr_obs1(obs_x,obs_y);
-			clr_obs2(obs_x+20,obs_y);
+			clr_obs_g1(obs_x,obs_y);
 			obs_x = 480;
 		}
 		
 		if(a == 32) {
-			if(dino_y == line_y + 3) {
+			if(dino_y == line_y + 3 && dino_x == x+50+15) {
 				jump = 1;
 				a = 0;
 			}
 		}
 		
-		if(jump == 1 && d_a == 3) {
+		if(jump == 1 && d_a == 2) {
 			if(dino_y > 185) {
 				dino_y -= 2;
 			} else {
 				jump = 2;
 			}
 		}
-		if(jump == 2 && d_a == 3) {
+		if(jump == 2 && d_a == 2) {
 			if(dino_y < 264) {
 				dino_y += 2;
 			} else {
@@ -92,16 +102,16 @@ void start_game() {
 			line(x+20,y,480,y);
 		}
 		
-		if(line_x <= 500) {
+		if(line_x <= 480) {
 			putpixel(line_x,line_y,WHITE);
 			line_x++;
-			if(line_x == 500) { line_v = 0; }
+			if(line_x == 480) { line_v = 0; }
 		}
 		d_a++;
 		d_b++;
 		d_c++;
-		if(d_a == 4) { d_a = 0; }
-		if(d_b == 5) { d_b = 0; }
+		if(d_a == 3) { d_a = 0; }
+		if(d_b == 3) { d_b = 0; }
 		if(d_c == 10) { d_c = 0; }
 		
 		delay(1);

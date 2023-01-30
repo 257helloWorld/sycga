@@ -2,9 +2,10 @@
 #include<dino.h>
 #include<game.h>
 
-int wifi = 0;
+int wifi = 1;
 
 void wifi_off_layout() {
+	d_time(h,m,s,getmaxx()/2-25,25);
 	window();
 	window_title();
 	taskbar();
@@ -27,6 +28,7 @@ void wifi_off_layout() {
 }
 
 void wifi_on_layout() {
+	d_time(h,m,s,getmaxx()/2-25,25);
 	taskbar();
 	battery_icon();
 	wifi_icon();
@@ -56,9 +58,22 @@ void toggle_wifi() {
 
 void scene2() {
 	int a = 0;
+	d_time(h,m,s,getmaxx()/2-25,25);
 	if(wifi == 1) {	wifi_on_layout(); }
 	if(wifi == 0) { wifi_off_layout(); }
 	while(1) {
+		// Time
+		h = c_hours();
+		m = c_mins();
+		s = c_secs();
+		if(s != t_s) {
+			clr_d_time(t_h,t_m,t_s,getmaxx()/2-25,25);
+			d_time(h,m,s,getmaxx()/2-25,25);
+			t_s = s;
+			t_m = m;
+			t_h = h;
+		}
+		// End
 		a = 0;
 		if(kbhit()) {
 			a = getch();

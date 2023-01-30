@@ -23,7 +23,7 @@ void main() {
 	int jump = 0;
 	while(1) {
 		cleardevice();
-		d_time(x-40,15);
+		d_time(100,100);
 		line(50,y,590,y);
 		obs_x--;
 		rectangle(obs_x, obs_y, obs_x+20, obs_y-20);
