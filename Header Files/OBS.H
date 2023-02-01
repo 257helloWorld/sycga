@@ -44,21 +44,41 @@ void clr_obs2(int x, int y) {
 	obs2(x,y);
 	setcolor(WHITE);
 }
-
-void obs_g2(int x, int y) {
-	
-}
-
+// Obstacle Group: 1
 void obs_g1(int x, int y) {
 	obs1(x,y);
-	obs2(x+18,y+5);
-	obs1(x+33,y);
 }
 void clr_obs_g1(int x, int y) {
 	setcolor(BLACK);
+	obs_g1(x,y);
+	setcolor(WHITE);
+}
+
+// Obstacle Group: 2
+void obs_g2(int x, int y) {
+	obs2(x,y);
+}
+void clr_obs_g2(int x, int y) {
+	setcolor(BLACK);
+	obs_g2(x,y);
+	setcolor(WHITE);
+}
+
+// Obstacle Group: 3
+void obs_g3(int x, int y) {
+	obs1(x,y);
+	obs1(x+18,y);
+}
+
+// Obstacle Group: 4
+void obs_g4(int x, int y) {
 	obs1(x,y);
 	obs2(x+18,y+5);
 	obs1(x+33,y);
+}
+void clr_obs_g4(int x, int y) {
+	setcolor(BLACK);
+	obs_g4(x,y);
 	setcolor(WHITE);
 }
 
