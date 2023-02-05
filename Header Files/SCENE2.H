@@ -76,17 +76,19 @@ void scene2() {
 		a = 0;
 		if(kbhit()) {
 			a = getch();
-			if(a == 8 || a == 7) {
+			if(a == 27) {
+				a = 0;
 				closegraph();
 				break;
 			}
 			if(a == 59) {
+				a = 0;
 				toggle_wifi();
 			}
 			if(wifi != 1 && a == 32) {
-				if(st == 0) { st = start_game(); }
-				if(st == 1) { wifi_off_layout(); continue; }
-				else { break; }
+				a = 0;
+				st = start_game();
+				if(st == 1) { scene2(); st = 0;}
 			}
 		}
 

@@ -6,6 +6,7 @@ int cur_obs1, cur_obs2, cur_obs3;
 int obs1_x, obs1_y, obs2_x, obs2_y, obs3_x, obs3_y;
 int last_x;
 int score = 0;
+int b, c;
 char* c_score = score_char(score);
 
 int random_obs_no() {
@@ -220,8 +221,8 @@ int start_game() {
 		
 		
 		// Collision Detection.
-		if(dino_x > obs1_x-2 && dino_x < obs1_x+1 && dino_y > obs1_y-20 && obs1_x > boundX1) {
-			game_over();
+		if(dino_x > obs1_x-2 && dino_x < obs1_x+1 && dino_y > obs1_y-20 && obs1_x > boundX1) {	
+			game_over();	
 			return 1;
 		}
 		else if(dino_x > obs2_x-2 && dino_x < obs2_x+1 && dino_y > obs2_y-20 && obs2_x > boundX1) {
