@@ -1,4 +1,4 @@
-#include<game2.h>
+#include<game.h>
 
 int wifi;
 int st;
