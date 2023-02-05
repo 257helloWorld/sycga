@@ -7,10 +7,10 @@ void main(){
 	int gd = DETECT, gm;
 	initgraph(&gd, &gm, "C:\\TC\\BGI");
 
-	click_chrome();
+//	click_chrome();
 //	delay(1000);
-	cleardevice();
-	open_chrome();
+//	cleardevice();
+	open_chrome(0);
 
 
 	getch();
