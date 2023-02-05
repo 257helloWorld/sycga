@@ -1,0 +1,13 @@
+#include<dino.h>
+#include<graphics.h>
+#include<conio.h>
+#include<iostream.h>
+
+void main() {
+	int gd = DETECT, gm;
+	initgraph(&gd, &gm, "C:\\TC\\BGI");
+	int x = getmaxx()/2;
+	int y = getmaxy()/2;
+	l_ino(x,y);
+	closegraph();
+}

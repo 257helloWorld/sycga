@@ -1,5 +1,13 @@
+#include<graphics.h>
+#include<conio.h>
+#include<dos.h>
+#include<stdlib.h>
+#include<time.h>
 #include<layout.h>
+#include<itc.h>
 #include<dtime.h>
+#include<dino.h>
+#include<obs.h>
 
 char* h = c_hours();
 char* m = c_mins();

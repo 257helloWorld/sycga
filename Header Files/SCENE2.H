@@ -1,8 +1,7 @@
-#include<scene1.h>
-#include<dino.h>
-#include<game.h>
+#include<game2.h>
 
-int wifi = 1;
+int wifi;
+int st;
 
 void wifi_off_layout() {
 	d_time(h,m,s,getmaxx()/2-25,25);
@@ -12,11 +11,11 @@ void wifi_off_layout() {
 	battery_icon();
 	wifi_off_icon();
 	setcolor(LIGHTGRAY);
-	int x = 132, y = 261;
+	int x = 132, y = 260;
 //	line(x+20,y,x+400,y);
 	line(x+20,y,x+60,y);
 	setcolor(WHITE);
-	dino(x+50,y+3);
+	dino(x+50,y);
 	setcolor(LIGHTGRAY);
 	settextstyle(2,0,6);
 	outtextxy(x+10,y+25,"No Internet");
@@ -85,14 +84,16 @@ void scene2() {
 				toggle_wifi();
 			}
 			if(wifi != 1 && a == 32) {
-				start_game();
-				break;
+				if(st == 0) { st = start_game(); }
+				if(st == 1) { wifi_off_layout(); continue; }
+				else { break; }
 			}
 		}
 
 	}
 }
 
-void open_chrome() {
+void open_chrome(int w) {
+	wifi = w;
 	scene2();
 }
